@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-4-4 20:49:37 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.phoneWeb.entities.Orders" table="ORDERS">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="user" class="com.phoneWeb.entities.User" fetch="join">
+            <column name="USER_ID" />
+        </many-to-one>
+        <many-to-one name="admin" class="com.phoneWeb.entities.Admin" fetch="join">
+            <column name="ADMIN_ID" />
+        </many-to-one>
+        <property name="address" type="java.lang.String">
+            <column name="ADDRESS" />
+        </property>
+        <property name="code" type="java.lang.String">
+            <column name="CODE" />
+        </property>
+        <many-to-one name="phone" class="com.phoneWeb.entities.Product" fetch="join">
+            <column name="PHONE_ID" />
+        </many-to-one>
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
+        </property>
+        <property name="payment" type="java.lang.String">
+            <column name="PAYMENT" />
+        </property>
+        <property name="remark" type="java.lang.String">
+            <column name="REMARK" />
+        </property>
+        <property name="createdate" type="java.util.Date">
+            <column name="CREATEDATE" />
+        </property>
+        <property name="state" type="int">
+            <column name="STATE" />
+        </property>
+        <property name="treatedate" type="java.util.Date">
+            <column name="TREATEDATE" />
+        </property>
+        <property name="treateRemark" type="java.lang.String">
+            <column name="TREATEREMARK" />
+        </property>
+    </class>
+</hibernate-mapping>
