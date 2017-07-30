@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+
+	<package name="default" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor-stack name="phoneWebStack">
+				<interceptor-ref name="paramsPrepareParamsStack">
+					<param name="prepare.alwaysInvokePrepare">false</param>
+				</interceptor-ref>
+
+			</interceptor-stack>
+		</interceptors>
+		<!-- 使用新的拦截器栈 -->
+		<default-interceptor-ref name="phoneWebStack" />
+		<!-- <interceptor-ref name="fileUpload"> <param name="allowedType">image/bmp,image/x-png,image/gif,image/jpeg</param> 
+			<param name="maximumSize">10900</param> </interceptor-ref> <interceptor-ref 
+			name="defaultStack"></interceptor-ref> -->
+
+		<!-- adminaction start -->
+		<action name="admin-*" class="adminAction" method="{1}">
+			<result name="alogin">/WEB-INF/admin/admin-login.jsp</result>
+			<result name="success">/WEB-INF/admin-login/admin-manage.jsp
+			</result>
+			<result name="input">/index.jsp
+			</result>
+			<result name="solve">/WEB-INF/admin-login/admin-solve.jsp
+			</result>
+			<result name="newsmanage">/WEB-INF/admin-login/admin-newsmanage.jsp
+			</result>
+			<result name="newsrelease">/WEB-INF/admin-login/admin-newsrelease.jsp
+			</result>
+			<result name="gbookmanage">/WEB-INF/admin-login/admin-gbookmanage.jsp
+			</result>
+			<result name="gbdetail">/WEB-INF/admin-login/admin-gbdetail.jsp
+			</result>
+
+			<result name="uploadphonetype">/WEB-INF/admin-login/admin-phonetypeupload.jsp
+			</result>
+			<result name="uploadphone">/WEB-INF/admin-login/admin-phonerelease.jsp
+			</result>
+			<result name="phonemanage">/WEB-INF/admin-login/admin-phonemanage.jsp</result>
+
+			<result type="stream" name="ajax-success">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inStream</param>
+			</result>
+		</action>
+		<!-- adminaction end -->
+
+		<!-- useraction start -->
+		<action name="user-*" class="userAction" method="{1}">
+			<result name="phoneweb">/phoneweb.jsp</result>
+			<result name="contact">/WEB-INF/contact.jsp</result>
+			<result name="about">/WEB-INF/about.jsp</result>
+			<result name="guestbooksuccess">/WEB-INF/user/addgbooksuccess.jsp</result>
+			<result name="reg">/WEB-INF/user/reg.jsp</result>
+			<result name="regSuccess">/WEB-INF/user/login.jsp</result>
+			<result name="login">/WEB-INF/user/login.jsp</result>
+			<result name="guestbook">/WEB-INF/user/guestbook.jsp</result>
+			<result name="newscontent">/WEB-INF/user/content/content.jsp</result>
+			<result name="newslist">/WEB-INF/user/content/content_list.jsp</result>
+			<result name="phonelist">/WEB-INF/user/content/phone_list.jsp</result>
+			<result name="phonedetail">/WEB-INF/user/content/phone_content.jsp</result>
+			<result name="getlist">/WEB-INF/user/mygot.jsp</result>
+			
+
+			<result type="stream" name="ajax-success">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inStream</param>
+			</result>
+		</action>
+		<!-- useraction end -->
+
+
+
+		<!-- 处理用户在网址栏随意输入action -->
+		<action name="*">
+			<result>/index.jsp</result>
+		</action>
+	</package>
+
+	<!-- Add packages here -->
+
+</struts>

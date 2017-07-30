@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- admin的bean配置start -->
+	<bean id="adminDao" class="com.phoneWeb.dao.AdminDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="adminService" class="com.phoneWeb.service.AdminService">
+		<property name="adminDao" ref="adminDao"></property>
+	</bean>
+	
+	<bean id="adminAction" class="com.phoneWeb.actions.AdminAction" scope="prototype">
+		<property name="adminService" ref="adminService"></property>
+	</bean>
+	<!-- admin的bean配置end -->
+	<bean id="userDao" class="com.phoneWeb.dao.UserDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="userService" class="com.phoneWeb.service.UserService">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<bean id="userAction" class="com.phoneWeb.actions.UserAction">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<!-- admin的bean配置start -->
+	
+	
+
+</beans>
